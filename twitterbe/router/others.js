@@ -4,20 +4,21 @@ const {createPost,deletePost,updatePost,
     deletecomment,updatecomment,shareuserdata,
     modifyuserdata,savedpost}=require('../function/others')
 
+const {validateToken}=require("../middleware/validateuser")
 const others=express.Router();
 
-others.get('/createPost',createPost)
- others.get('/deletePost',deletePost)
- others.get('/updatePost',updatePost)
- others.get('/searchPost', searchPost)
- others.get('/like',like)
- others.get('/comment',comment)
- others.get('/dislike',dislike)
- others.get('/deletecomment',deletecomment)
- others.get('/updatecomment',updatecomment)
- others.get('/shareuserdata',shareuserdata)
- others.get('/modifyuserdata',modifyuserdata)
- others.get('/savedpost',savedpost)
+others.get('/createPost',validateToken,createPost)
+ others.get('/deletePost',validateToken,deletePost)
+ others.get('/updatePost',validateToken,updatePost)
+ others.get('/searchPost',validateToken, searchPost)
+ others.get('/like',validateToken,like)
+ others.get('/comment',validateToken,comment)
+ others.get('/dislike',validateToken,dislike)
+ others.get('/deletecomment',validateToken,deletecomment)
+ others.get('/updatecomment',validateToken,updatecomment)
+ others.get('/shareuserdata',validateToken,shareuserdata)
+ others.get('/modifyuserdata',validateToken,modifyuserdata)
+ others.get('/savedpost',validateToken,savedpost)
 
 
-module.exports={others}
+module.exports={others} 
