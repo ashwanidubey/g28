@@ -13,7 +13,8 @@ const validateToken=async (req,res,next)=>{
         {
             return res.status(401).send({error : "invalid token 1"});
         }
-        const dectoken=await jwt.verify(token,jwt_secrets);    
+        const dectoken=await jwt.decode(token,jwt_secrets)
+        //const dectoken=await jwt.verify(token,jwt_secrets);    
         req.userid=dectoken.id ;       
         next();
     }
